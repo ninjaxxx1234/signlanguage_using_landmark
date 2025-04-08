@@ -1,1 +1,1 @@
-from utils.cvfpscalc import CvFpsCalc
+from ml_model.utils.cvfpscalc import CvFpsCalc
