@@ -12,8 +12,8 @@ import cv2 as cv
 import numpy as np
 import mediapipe as mp
 
-from ml_model.utils import CvFpsCalc
-from ml_model.model import KeyPointClassifier
+from utils.cvfpscalc import CvFpsCalc
+from utils.keypoint_classifier import KeyPointClassifier
 
 def get_args():
     parser = argparse.ArgumentParser()
@@ -64,7 +64,7 @@ def main():
 
     keypoint_classifier = KeyPointClassifier()
 
-    with open(r'ml_model/all_class/label.csv', encoding='utf-8-sig') as f:
+    with open(r'utils/label.csv', encoding='utf-8-sig') as f:
         keypoint_classifier_labels = csv.reader(f)
         keypoint_classifier_labels = [row[0] for row in keypoint_classifier_labels]
 
@@ -167,7 +167,7 @@ def pre_process_landmark(landmark_list):
 
 def logging_csv(number, mode, landmark_list):
     if mode == 1 and (0 <= number <= 9):
-        csv_path = r'ml_model\all_class\label.csv'
+        csv_path = r'utils/labels.csv'
         with open(csv_path, 'a', newline="") as f:
             writer = csv.writer(f)
             writer.writerow([number, *landmark_list])
