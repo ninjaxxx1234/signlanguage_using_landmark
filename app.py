@@ -72,9 +72,9 @@ def main():
 
     point_history_classifier = PointHistoryClassifier()
 
+ 
 
-
-    # Read Labels ###########################################################
+    # Read labels ###########################################################
     with open(r'ml_model/all_class/label.csv',
               encoding='utf-8-sig') as f:
         keypoint_classifier_labels = csv.reader(f)
@@ -210,7 +210,7 @@ def calc_bounding_rect(image, landmarks):
         # print("\n\n",image_width, image_height,landmarks,"\n\n")
         landmark_x = min(int(landmark.x * image_width), image_width - 1)
         landmark_y = min(int(landmark.y * image_height), image_height - 1)
-
+        
         landmark_point = [np.array((landmark_x, landmark_y))]
 
         landmark_array = np.append(landmark_array, landmark_point, axis=0)
@@ -251,7 +251,7 @@ def pre_process_landmark(landmark_list):
         temp_landmark_list[index][1] = temp_landmark_list[index][1] - base_y
 
     # print("\n\n",temp_landmark_list)
-
+    
     # Convert to a one-dimensional list
     temp_landmark_list = list(
         itertools.chain.from_iterable(temp_landmark_list))
@@ -262,15 +262,15 @@ def pre_process_landmark(landmark_list):
     max_value = max(list(map(abs, temp_landmark_list)))
 
     # print("\n\n",max_value)
-
+    
     def normalize_(n):
         return n / max_value
 
     temp_landmark_list = list(map(normalize_, temp_landmark_list))
 
     # print("\n\n",temp_landmark_list)
-
-
+    
+    
     return temp_landmark_list
 
 
