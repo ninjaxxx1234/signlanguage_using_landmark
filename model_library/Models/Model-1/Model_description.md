@@ -1,6 +1,6 @@
 # Model Description
 
-Unknown
+ANN initial iteration. Low layers
 
 # Dataset Used
 
@@ -8,4 +8,4 @@ Dataset-1
 
 # Model Accuracy
 
-To be Tested
+
